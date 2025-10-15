@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visual Product Matcher</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Visual Product Matcher</h1>
+  </header>
+
+  <main>
+    <section class="upload-section">
+      <h2>Upload or Paste Image URL</h2>
+      <form id="uploadForm">
+        <input type="file" id="imageUpload" accept="image/*" />
+        <input type="url" id="imageUrl" placeholder="Enter Image URL" />
+        <button type="button" id="previewBtn">Preview</button>
+      </form>
+      <div class="preview-container">
+        <img id="previewImage" src="" alt="Preview will appear here" />
+      </div>
+    </section>
+
+    <section class="results-section">
+      <h2>Similar Products</h2>
+      <div class="filter">
+        <label for="similarity">Filter by Similarity Score:</label>
+        <input type="range" id="similarity" min="0" max="100" value="50" />
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="https://via.placeholder.com/150" alt="Product 1">
+          <h3>Product Name 1</h3>
+          <p>Category: Shoes</p>
+          <p>Similarity: 87%</p>
+        </div>
+        <div class="product-card">
+          <img src="https://via.placeholder.com/150" alt="Product 2">
+          <h3>Product Name 2</h3>
+          <p>Category: Bag</p>
+          <p>Similarity: 82%</p>
+        </div>
+        <div class="product-card">
+          <img src="https://via.placeholder.com/150" alt="Product 3">
+          <h3>Product Name 3</h3>
+          <p>Category: Watch</p>
+          <p>Similarity: 78%</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Visual Product Matcher | Designed by You</p>
+  </footer>
+
+  <script>
+    const previewBtn = document.getElementById('previewBtn');
+    const previewImage = document.getElementById('previewImage');
+    const imageUpload = document.getElementById('imageUpload');
+    const imageUrl = document.getElementById('imageUrl');
+
+    previewBtn.addEventListener('click', () => {
+      if (imageUpload.files && imageUpload.files[0]) {
+        previewImage.src = URL.createObjectURL(imageUpload.files[0]);
+      } else if (imageUrl.value.trim() !== "") {
+        previewImage.src = imageUrl.value;
+      } else {
+        alert("Please upload an image or enter a URL.");
+      }
+    });
+  </script>
+</body>
+</html>
